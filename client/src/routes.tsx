@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
 import { Home, Notifications, AccountCircle } from '@material-ui/icons';
 
+import LoginButton from './components/LoginButton';
+
 const Routes = [
 
     {
@@ -8,7 +10,8 @@ const Routes = [
         sidebarName: 'home',
         navbarName: 'home',
         icon: Home,
-        component: () => <div> bruh </div>,},
+        component: LoginButton,
+    }
 ];
 
 export default Routes;

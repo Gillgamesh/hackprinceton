@@ -25,7 +25,7 @@ const App = observer( () => {
                 <Drawer open= {store.drawerToggled}
                     setOpen = {store.setDrawer}/>
                     {Routes.map((prop, key) => <Route path={prop.path} key={key} component={prop.component} /> )}
-        </Router>
+            </Router>
         </MuiThemeProvider>
     );
 });
