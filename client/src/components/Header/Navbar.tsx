@@ -12,6 +12,10 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
+// @ts-ignore
+import {useBlockstack} from 'react-blockstack';
+
+
 
 const useStyles = makeStyles(
     (theme: Theme) => 
@@ -31,19 +35,18 @@ const useStyles = makeStyles(
 
 export default function HeaderNav({toggleDrawer} : any) {
     const classes = useStyles();
-    const [auth, setAuth] = React.useState(true);
+    const {signIn, signOut, person} = useBlockstack();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
-
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setAuth(event.target.checked);
-    }
     function handleMenu(event: React.MouseEvent<HTMLElement>) {
         setAnchorEl(event.currentTarget);
     }
     function handleClose() {
         setAnchorEl(null);
+    }
+    function isLoggedIn() {
+        return person != null;
     }
 
     return (
@@ -59,6 +62,41 @@ export default function HeaderNav({toggleDrawer} : any) {
                     <Typography variant="h6" className={classes.title}>
                         JOBd
                     </Typography>
+                        <div>
+                            <IconButton
+                                aria-label="Account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleMenu}
+                                color="inherit"
+                            >
+                                <AccountCircle />
+                            </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                    horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                    horizontal: 'right',
+                            }}
+                            open={open}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={signIn || signOut}>
+                                    {signIn ? "Sign In" : 
+                                        signOut ? "Sign Out":
+                                    "Pending..."}
+                                        </MenuItem>
+                            {/* { person && (<MenuItem onClick={handleClose}>My account</MenuItem> */}
+                            {/* ) */}
+                            {/* } */}
+                        </Menu>
+                    </div>
         </Toolbar>
     </AppBar>
 </div>

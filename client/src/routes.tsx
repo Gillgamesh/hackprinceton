@@ -8,15 +8,15 @@ import CompanyView from './containers/CompanyView'
 const Routes = [
     {
         path: '/',
-        sidebarName: 'home',
-        navbarName: 'home',
+        sidebarName: 'Home',
+        navbarName: 'Home',
         icon: Home,
         component: CompanyView,
     },
     {
         path: '/profile',
-        sidebarName: 'profile',
-        navbarName: 'profile',
+        sidebarName: 'Profile',
+        navbarName: 'Profile',
         icon: AccountCircle,
         component: Profile,
     }
