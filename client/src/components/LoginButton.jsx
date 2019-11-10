@@ -31,7 +31,6 @@ export default function LoginButton () {
             onClick={ signIn || signOut }>
             { signIn ? "Sign In" : signOut ? "Sign Out" : "Pending" }
         </Button>
-      <CompanyView/>
     </div>
     );
 }

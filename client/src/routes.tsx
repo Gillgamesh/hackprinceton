@@ -3,6 +3,7 @@ import { Home, Notifications, AccountCircle } from '@material-ui/icons';
 
 import LoginButton from './components/LoginButton';
 import Profile from './components/Profile';
+import CompanyView from './containers/CompanyView'
 
 const Routes = [
     {
@@ -10,7 +11,7 @@ const Routes = [
         sidebarName: 'home',
         navbarName: 'home',
         icon: Home,
-        component: LoginButton,
+        component: CompanyView,
     },
     {
         path: '/profile',

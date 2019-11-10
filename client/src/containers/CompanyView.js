@@ -12,11 +12,20 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    marginTop: theme.spacing(13),
+
   },
   paper: {
     height: 140,
     width: 100,
   },
+  '@global': {
+        body: {
+            backgroundColor: "#edf3f3",
+        },
+    },
+   
+
 }));
 
 export default function CompanyView() {
