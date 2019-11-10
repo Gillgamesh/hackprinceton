@@ -119,7 +119,10 @@ export default function Profile () {
                     )
                     }
                 />
-                <Button onClick={() => window.open(state.resumeURL)}>Download resume</Button>
+                { state.resumeURL ? 
+                <Button onClick={() => window.open(state.resumeURL)}>Download Resume</Button> :
+                null
+                }
         </div>
     );
 }
