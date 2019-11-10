@@ -47,13 +47,15 @@ const validationSchema = Yup.object().shape({
 })
 
 export default function Profile () {
-    getFile("user.json")
-        .then((file) => {
-            let obj = JSON.parse(file);
-            if (!file) return;
-            setState({firstName: obj.firstName, lastName: obj.lastName});
-        });
-    const [state, setState] = useState({firstName:"", lastName:""});
+    const [state, setState] = useState({firstName:"", lastName:"", loaded:false});
+    if (!state.loaded) {
+        getFile("user.json")
+            .then((file) => {
+                if (!file && !state.loaded) return;
+                let obj = JSON.parse(file);
+                setState({firstName: obj.firstName, lastName: obj.lastName, loaded:true});
+            });
+    }
     const classes = useStyles();
     return (
         <div className={classes.paper}>
@@ -78,21 +80,21 @@ export default function Profile () {
                             name="firstName"
                             label="First Name"
                             component={TextField} />
-                        <Field
-                            className={classes.field}
-                            name="lastName"
-                            label="Last Name"
-                            component={TextField} />
-                        <Button
-                            className={classes.submit}
-                            disabled={isSubmitting}
-                            onClick={submitForm}>
-                            Submit
-                        </Button>
-                    </Form>
-                    )
-                    }
-                />
+                            <Field
+                                className={classes.field}
+                                name="lastName"
+                                label="Last Name"
+                                component={TextField} />
+                                <Button
+                                    className={classes.submit}
+                                    disabled={isSubmitting}
+                                    onClick={submitForm}>
+                                    Submit
+                                    </Button>
+                                        </Form>
+                                            )
+                                            }
+                                        />
 
         </div>
     );
