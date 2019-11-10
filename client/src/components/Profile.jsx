@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
 const validationSchema = Yup.object().shape({
     firstName: Yup.string().required("Required"),
     lastName: Yup.string().required("Required"),
+    email: Yup.string().email().required("Required"),
 })
 
 export default function Profile () {
@@ -77,9 +78,11 @@ export default function Profile () {
                     }}
                     onSubmit = {
                     (values, {setSubmitting}) => {
-                    let blob = new Blob([values.resume]);
-                    blob.arrayBuffer()
-                    .then(blobBuffer => putFile("resume.pdf", blobBuffer, {encrypt:false}));
+                    if (values.resume) {
+                      let blob = new Blob([values.resume]);
+                      blob.arrayBuffer()
+                      .then(blobBuffer => putFile("resume.pdf", blobBuffer, {encrypt:false}));
+                    }
                     values.resume = null;
                     console.log(values);
                     putFile("user.json", JSON.stringify(values));
@@ -102,6 +105,26 @@ export default function Profile () {
                             className={classes.field}
                             name="email"
                             label="Email"
+                            component={TextField} />
+                        <Field
+                            className={classes.field}
+                            name="skills"
+                            label="Skills"
+                            component={TextField} />
+                        <Field
+                            className={classes.field}
+                            name="github"
+                            label="GitHub"
+                            component={TextField} />
+                        <Field
+                            className={classes.field}
+                            name="linkedin"
+                            label="LinkedIn"
+                            component={TextField} />
+                        <Field
+                            className={classes.field}
+                            name="site"
+                            label="Personal Site"
                             component={TextField} />
                         <Field
                             className={classes.field}

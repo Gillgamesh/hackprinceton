@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -28,12 +28,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function InfoPage({match}) {
+  const [state, setState] = useState({applied:false});
   const classes = useStyles();
   const theme = useTheme();
   let data = companies[match.params.companyId];
   
-  const handleClick = () =>{
-    console.log("click");
+  const handleClick = () => {
+    let body = {
+        name: companies[match.params.companyId].company,
+        status: "No Response Yet",
+        position: companies[match.params.companyId].role,
+        location: companies[match.params.companyId].location,
+      };
+    fetch('https://mdabedin.api.stdlib.com/sheet@dev/sheet/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }).then(() => setState({applied:true}));
   };
   return (
     <center>
@@ -57,6 +70,7 @@ export default function InfoPage({match}) {
         variant="contained"
         color="secondary"
         onClick={handleClick}
+        disabled={state.applied}
         className={classes.buttonBase}>
     Apply!
     </Button>

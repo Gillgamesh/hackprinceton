@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 import companies from '../companies.js';
 
@@ -19,6 +20,9 @@ const useStyles = makeStyles(theme => ({
   paper: {
     height: 140,
     width: 100,
+  },
+  buttonBase: {
+    margin: 20,
   },
   '@global': {
         body: {
@@ -34,14 +38,27 @@ export default function CompanyView() {
             <CompanyCard num={key} data={companies[key]}/>
             </Grid>
           ));
-  console.log(companyCards);
+  let handleExportClick = () => {
+    window.open("https://docs.google.com/spreadsheets/d/13JnzjPCIkCJz9fGudS758-cgc_zYvQSNt6SVkef2i7k/edit#gid=0");
+  };
   return (
-    <Grid container className={classes.root} spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justify="center" spacing={2}>
-          {companyCards}
+    <div>
+      <Grid container className={classes.root} spacing={2}>
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={2}>
+            {companyCards}
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+      <center>
+      <Button
+        variant="contained"
+        color="secondary"
+        className={classes.buttonBase}
+        onClick={handleExportClick}>
+        Export to Google Sheets
+      </Button>
+      </center>
+    </div>
   );
 }
