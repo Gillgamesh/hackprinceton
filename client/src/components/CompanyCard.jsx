@@ -7,6 +7,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Button from '@material-ui/core/Button';
+import InfoPage from'./InfoPage';
+//REDIRECT
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,12 +30,13 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function CompanyCard() {
+export default function CompanyCard(data) {
+  console.log('data',data.data.company);
   const classes = useStyles();
   const theme = useTheme();
 
   const handleClick = () =>{
-    console.log("click");
+    return <InfoPage data={data}/>;
   };
   return (
     <ButtonBase
@@ -46,19 +49,19 @@ export default function CompanyCard() {
         <CardMedia
           //style={{border:'1px solid red'}}
           className={classes.cover}
-          image="https://cdn.shopify.com/s/files/1/2396/7733/products/Logo_300x300.png?v=1560555268"
+          image={data.data.image}
           title="Live from space album cover"
         />
         </div>
 
       <Typography component="h5" variant="h5" >
-        Company Name
+        {data.data.company}
       </Typography>
       <Typography component="h6" variant="h6" >
-        Software Engineering Intern
+        {data.data.role}
       </Typography>
           <Typography component="p" variant="p" style={{ width:'270'}}>
-            Location City, Location State
+            {data.data.location}
           </Typography>
           <hr/>
         </div>

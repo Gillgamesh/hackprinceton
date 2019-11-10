@@ -4,6 +4,7 @@ import { Home, Notifications, AccountCircle } from '@material-ui/icons';
 import LoginButton from './components/LoginButton';
 import Profile from './components/Profile';
 import CompanyView from './containers/CompanyView'
+import InfoPage from './components/InfoPage'
 
 const Routes = [
     {
@@ -19,7 +20,16 @@ const Routes = [
         navbarName: 'Profile',
         icon: AccountCircle,
         component: Profile,
-    }
+    },
+     {
+        path: '/InfoPage',
+        sidebarName: 'info',
+        navbarName: 'info',
+        icon: AccountCircle,
+        component: InfoPage
+
+    },
+
 ];
 
 export default Routes;
