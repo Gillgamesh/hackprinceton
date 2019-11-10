@@ -5,26 +5,25 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles(theme => ({
   card: {
     display: 'flex',
-    height: 200,
-    width: 500,
-  },
-  details: {
-    display: 'flex',
     flexDirection: 'column',
+    height: 300,
+    width: 290,
   },
-  content: {
-    flex: '1 0 auto',
-  },
+
   cover: {
-    width : 200
+    height: 150,
+    width: 150,
+  },
+  buttonBase:{
+    borderWidth: 1,
+    borderColor: 'yellow',
   },
 
 }));
@@ -37,30 +36,43 @@ export default function CompanyCard() {
     console.log("click");
   };
   return (
-
     <ButtonBase
-          onClick={handleClick}
-      >
-    <Card className={classes.card}>
+      style={{display:'flex', flexDirection:'column'}}
+      onClick={handleClick}
+    >
+      <Card className={classes.card} style={{padding:'10px'}}>
+        <div className={"top-card"}>
+        <div className={'centerMedia'} style={{display:'flex',justifyContent:'center'}}>
+        <CardMedia
+          //style={{border:'1px solid red'}}
+          className={classes.cover}
+          image="https://cdn.shopify.com/s/files/1/2396/7733/products/Logo_300x300.png?v=1560555268"
+          title="Live from space album cover"
+        />
+        </div>
 
-      <CardMedia
-        className={classes.cover}
-        image="https://cdn.shopify.com/s/files/1/2396/7733/products/Logo_300x300.png?v=1560555268"
-        title="Live from space album cover"
-      />
-      <div className={classes.details}>
-
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            Live From Space
+      <Typography component="h5" variant="h5" >
+        Company Name
+      </Typography>
+      <Typography component="h6" variant="h6" >
+        Software Engineering Intern
+      </Typography>
+          <Typography component="p" variant="p" style={{ width:'270'}}>
+            Location City, Location State
           </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            Mac Miller
-          </Typography>
-        </CardContent>
-      </div>
+          <hr/>
+        </div>
+        <Button
 
-    </Card>
+            variant="contained"
+            color="secondary"
+            className={classes.paper}
+        >
+           Learn More
+    </Button>
+      </Card>
+
+
     </ButtonBase>
   );
 }
