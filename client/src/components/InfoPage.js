@@ -39,14 +39,14 @@ export default function InfoPage(data) {
       <div style={{backgroundColor:'white', display:'flex', flexDirection:'column',alignItems:'center',borderRadius:'2px'}}>
         <CardMedia
           className={classes.cover}
-          image= {data.data.image}
+          image= {data.image}
           title="Live from space album cover"
         />
         <Typography component="h5" variant="h5" >
-          {data.data.company}
+          {data.company}
         </Typography>
         <Typography component="h6" variant="h6" >
-          {data.data.role}
+          {data.role}
         </Typography>
         <Button onClick={handleClick}>
           Apply!

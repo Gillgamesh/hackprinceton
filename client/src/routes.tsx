@@ -22,7 +22,7 @@ const Routes = [
         component: Profile,
     },
      {
-        path: '/InfoPage',
+        path: '/info',
         sidebarName: 'info',
         navbarName: 'info',
         icon: AccountCircle,

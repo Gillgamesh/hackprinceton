@@ -1,4 +1,4 @@
-export default let companies = [
+const companies = [
     {
         company:'BlockStack',
         role:'Software Engineering Intern',
@@ -6,10 +6,10 @@ export default let companies = [
         image:"https://cdn.shopify.com/s/files/1/2396/7733/products/Logo_300x300.png?v=1560555268"
     },
     {
-        company:'Standard Library',
+        company:'AirBnB',
         role:'Software Engineering Intern',
         location: 'San Francisco, CA',
-        image:"https://content.public.files.stdlib.com/www/static/images/standard-library-logo-wordmark.svg"
+        image:"https://www.bitrefill.com/content/cn/b_rgb%3AFFFFFF%2Cc_pad%2Cd_operator.png%2Ch_720%2Cw_1280/v1557916102/airbnb.png"
     },
     {
         company:'Bloomberg',
@@ -30,16 +30,16 @@ export default let companies = [
         image:"https://www.facebook.com/images/fb_icon_325x325.png"
     },
     {
-        company:'IBM',
+        company:'GitHub',
         role:'Software Engineering Intern',
-        location: 'Poughkeepsie, NY',
-        image:"https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg"
+        location: 'San Francisco, CA',
+        image:"https://pbs.twimg.com/profile_images/1157035760085684224/iuxTnT5g_400x400.jpg"
     },
     {
-        company:'Intel',
+        company:'Two Sigma',
         role:'Software Engineering Intern',
-        location: 'Santa Clara, NY',
-        image:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/1200px-Intel-logo.svg.png"
+        location: 'New York City, NY',
+        image:"https://www.twosigma.com/wp-content/uploads/two-sigma-logo.jpg"
     },
     {
         company:'Amazon',
@@ -48,3 +48,4 @@ export default let companies = [
         image:"http://g-ec2.images-amazon.com/images/G/01/social/api-share/amazon_logo_500500._V323939215_.png"
     },
 ];
+export default companies;
