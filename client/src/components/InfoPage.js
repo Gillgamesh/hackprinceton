@@ -63,10 +63,7 @@ export default function InfoPage({match}) {
       </div>
         <div style={{height:'10px'}}> </div>
           <div style={{backgroundColor:'white', display:'flex', flexDirection:'column',alignItems:'center', padding:'10px', borderRadius:'2px'}}>
-
-            The English Wikipedia is the English-language edition of the free online encyclopedia Wikipedia. Founded on 15 January 2001, it is the first edition of Wikipedia and, as of April 2019, has the most articles of any of the editions.[2] As of November 2019, 12% of articles in all Wikipedias belong to the English-language edition. This share has gradually declined from more than 50 percent in 2003, due to the growth of Wikipedias in other languages.[3] As of 10 November 2019, there are 5,967,751 articles on the site,[4] having surpassed the 5 million mark on 1 November 2015.[5] In October 2015, the combined text of the English Wikipedia's articles totalled 11.5 gigabytes when compressed.[6]
-
-            The Simple English Wikipedia is a variation in which most of the articles use only basic English vocabulary. There is also the Old English (Ænglisc/Anglo-Saxon) Wikipedia (angwiki). Community-produced news publications include The Signpost.[7]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
               </Card>
   </center>
