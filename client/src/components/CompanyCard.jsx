@@ -5,26 +5,23 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 const useStyles = makeStyles(theme => ({
   card: {
     display: 'flex',
-    height: 200,
-    width: 500,
-  },
-  details: {
-    display: 'flex',
     flexDirection: 'column',
+    height: 340,
+    width: 290,
   },
-  content: {
-    flex: '1 0 auto',
-  },
+
   cover: {
-    width : 200
+    height: 100,
+    width: 100,
+  },
+  buttonBase:{
+    borderWidth: 1,
+    borderColor: 'yellow',
   },
 
 }));
@@ -37,30 +34,28 @@ export default function CompanyCard() {
     console.log("click");
   };
   return (
-
     <ButtonBase
-          onClick={handleClick}
-      >
-    <Card className={classes.card}>
+      //style={{border:'1px solid red'}}
+      onClick={handleClick}
+    >
+      <Card className={classes.card} style={{padding:'10px'}}>
+        <CardMedia
+          //style={{border:'1px solid red'}}
+          className={classes.cover}
+          image="https://cdn.shopify.com/s/files/1/2396/7733/products/Logo_300x300.png?v=1560555268"
+          title="Live from space album cover"
+        />
+        <Typography component="h5" variant="h5" style={{textAlign:'left'}}>
+          Company Name
+        </Typography>
+        <Typography component="h6" variant="h6" style={{textAlign:'left'}}>
+          Software Engineering Intern
+        </Typography>
+        <Typography component="p" variant="p" style={{textAlign:'left'}}>
+          San Francisco, San Jose
+        </Typography>
 
-      <CardMedia
-        className={classes.cover}
-        image="https://cdn.shopify.com/s/files/1/2396/7733/products/Logo_300x300.png?v=1560555268"
-        title="Live from space album cover"
-      />
-      <div className={classes.details}>
-
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            Live From Space
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            Mac Miller
-          </Typography>
-        </CardContent>
-      </div>
-
-    </Card>
+      </Card>
     </ButtonBase>
   );
 }

@@ -3,12 +3,12 @@ import React from 'react';
 import { useBlockstack } from 'react-blockstack';
 import {makeStyles} from '@material-ui/core/styles';
 import {Button} from '@material-ui/core';
-
+import CompanyView from '../containers/CompanyView';
 
 const useStyles = makeStyles(theme => ({
     '@global': {
         body: {
-            backgroundColor: theme.palette.common.white,
+            backgroundColor: "#edf3f3",
         },
     },
     paper: {
@@ -18,11 +18,12 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
     },
 }));
- 
+
 export default function LoginButton () {
     const { signIn, signOut } = useBlockstack();
     const classes = useStyles();
-    return (
+  return (
+    <div>
         <Button
             variant="contained"
             color="primary"
@@ -30,6 +31,7 @@ export default function LoginButton () {
             onClick={ signIn || signOut }>
             { signIn ? "Sign In" : signOut ? "Sign Out" : "Pending" }
         </Button>
-    )
+      <CompanyView/>
+    </div>
+    );
 }
-
