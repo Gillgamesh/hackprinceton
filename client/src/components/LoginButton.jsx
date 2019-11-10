@@ -26,7 +26,7 @@ export default function LoginButton () {
     <div>
         <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.paper}
             onClick={ signIn || signOut }>
             { signIn ? "Sign In" : signOut ? "Sign Out" : "Pending" }
