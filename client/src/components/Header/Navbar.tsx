@@ -57,7 +57,7 @@ export default function HeaderNav({toggleDrawer} : any) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        NYCIML Scores 
+                        JOBd
                     </Typography>
         </Toolbar>
     </AppBar>
