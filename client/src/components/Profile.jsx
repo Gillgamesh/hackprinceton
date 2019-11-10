@@ -75,6 +75,11 @@ export default function Profile () {
                     firstName: state.firstName,
                     lastName: state.lastName,
                     email: state.email,
+                    address: state.address,
+                    skills: state.skills,
+                    github: state.github,
+                    linkedin: state.linkedin,
+                    site: state.site,
                     }}
                     onSubmit = {
                     (values, {setSubmitting}) => {
@@ -105,6 +110,11 @@ export default function Profile () {
                             className={classes.field}
                             name="email"
                             label="Email"
+                            component={TextField} />
+                        <Field
+                            className={classes.field}
+                            name="address"
+                            label="Full Address"
                             component={TextField} />
                         <Field
                             className={classes.field}
