@@ -6,7 +6,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import {Button} from '@material-ui/core';
 
 import {Formik, Field, Form} from 'formik';
-import {TextField} from 'formik-material-ui';
+import {TextField, SimpleFileUpload} from 'formik-material-ui';
 import * as Yup from 'yup';
 
 const useStyles = makeStyles(theme => ({
@@ -47,13 +47,15 @@ const validationSchema = Yup.object().shape({
 })
 
 export default function Profile () {
-    const [state, setState] = useState({firstName:"", lastName:"", loaded:false});
+    const [content, setContent] = useFile("resume.pdf");
+    console.log(content);
+    const [state, setState] = useState({firstName:"", lastName:"", email:"", loaded:false});
     if (!state.loaded) {
         getFile("user.json")
             .then((file) => {
                 if (!file && !state.loaded) return;
                 let obj = JSON.parse(file);
-                setState({firstName: obj.firstName, lastName: obj.lastName, loaded:true});
+                setState({firstName: obj.firstName, lastName: obj.lastName, email:"", loaded:true});
             });
     }
     const classes = useStyles();
@@ -69,7 +71,11 @@ export default function Profile () {
                     }}
                     onSubmit = {
                     (values, {setSubmitting}) => {
-                    putFile("user.json", JSON.stringify(values))
+                    let blob = new Blob([values.resume]);
+                    blob.arrayBuffer()
+                    .then(blobBuffer => putFile("resume.pdf", blobBuffer, {encrypt: false}));
+                    values.resume = null;
+                    putFile("user.json", JSON.stringify(values));
                     }
                     }
                     render = {
@@ -80,21 +86,32 @@ export default function Profile () {
                             name="firstName"
                             label="First Name"
                             component={TextField} />
-                            <Field
-                                className={classes.field}
-                                name="lastName"
-                                label="Last Name"
-                                component={TextField} />
-                                <Button
-                                    className={classes.submit}
-                                    disabled={isSubmitting}
-                                    onClick={submitForm}>
-                                    Submit
-                                    </Button>
-                                        </Form>
-                                            )
-                                            }
-                                        />
+                        <Field
+                            className={classes.field}
+                            name="lastName"
+                            label="Last Name"
+                            component={TextField} />
+                        <Field
+                            className={classes.field}
+                            name="email"
+                            label="Email"
+                            component={TextField} />
+                        <Field
+                            className={classes.field}
+                            name="resume"
+                            label="Resume"
+                            component={SimpleFileUpload} />
+                        <Button
+                            color="secondary"
+                            className={classes.submit}
+                            disabled={isSubmitting}
+                            onClick={submitForm}>
+                            Submit
+                        </Button>
+                    </Form>
+                    )
+                    }
+                />
 
         </div>
     );
