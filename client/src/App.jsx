@@ -30,7 +30,7 @@ const App = observer( () => {
                     <Navbar toggleDrawer = {store.toggleDrawer} />
                     <Drawer open= {store.drawerToggled}
                         setOpen = {store.setDrawer}/>
-                        {Routes.map((prop, key) => <Route path={prop.path} key={key} component={prop.component}/> )}
+                        {Routes.map((prop, key) => <Route exact path={prop.path} key={key} component={prop.component}/> )}
                 </Router>
             </MuiThemeProvider>
         </Blockstack>
