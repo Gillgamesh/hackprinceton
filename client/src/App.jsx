@@ -17,6 +17,8 @@ import {getUserSession} from './Auth';
 //visual
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import outerTheme from './themes/Theme';
+import {makeStyles} from '@material-ui/core/styles';
+
 
 const App = observer( () => {
     const store = useContext(MainStore);
@@ -28,7 +30,7 @@ const App = observer( () => {
                     <Navbar toggleDrawer = {store.toggleDrawer} />
                     <Drawer open= {store.drawerToggled}
                         setOpen = {store.setDrawer}/>
-                        {Routes.map((prop, key) => <Route path={prop.path} key={key} component={prop.component} /> )}
+                        {Routes.map((prop, key) => <Route path={prop.path} key={key} component={prop.component}/> )}
                 </Router>
             </MuiThemeProvider>
         </Blockstack>
