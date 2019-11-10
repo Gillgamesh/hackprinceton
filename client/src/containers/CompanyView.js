@@ -29,15 +29,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function CompanyView() {
   const classes = useStyles();
+  let companyCards = [0,1,2,3,4,5,6,7].map(key => (
+            <Grid key={key} item>
+            <CompanyCard num={key} data={companies[key]}/>
+            </Grid>
+          ));
+  console.log(companyCards);
   return (
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={2}>
-          {[0,1,2,3,4,5,6,7].map((key) => (
-            <Grid key={key} item>
-            <CompanyCard data={companies[key]}/>
-            </Grid>
-          ))}
+          {companyCards}
         </Grid>
       </Grid>
     </Grid>

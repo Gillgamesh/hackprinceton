@@ -21,13 +21,12 @@ const Routes = [
         icon: AccountCircle,
         component: Profile,
     },
-     {
-        path: '/info',
+    {
+        path: '/info/:companyId',
         sidebarName: 'info',
         navbarName: 'info',
         icon: AccountCircle,
         component: InfoPage
-
     },
 
 ];

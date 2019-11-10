@@ -31,12 +31,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CompanyCard(data) {
-  console.log('data',data);
   const classes = useStyles();
   const theme = useTheme();
 
   const handleClick = () =>{
-    return <InfoPage data={data}/>;
+    return window.location = `/info/${data.num}`;
   };
   return (
     <ButtonBase
@@ -47,7 +46,6 @@ export default function CompanyCard(data) {
         <div className={"top-card"}>
         <div className={'centerMedia'} style={{display:'flex',justifyContent:'center'}}>
         <CardMedia
-          //style={{border:'1px solid red'}}
           className={classes.cover}
           image={data.data.image}
           title="Live from space album cover"
