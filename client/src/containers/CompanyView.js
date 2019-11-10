@@ -39,6 +39,7 @@ export default function CompanyView() {
              <CompanyCard/>
             </Grid>
           ))}
+
         </Grid>
       </Grid>
     </Grid>

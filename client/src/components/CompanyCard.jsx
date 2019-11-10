@@ -6,7 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import {Button} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles(theme => ({
@@ -63,8 +63,13 @@ export default function CompanyCard() {
           <hr/>
         </div>
         <Button
-          onClick={handleClick}
-            />
+
+            variant="contained"
+            color="secondary"
+            className={classes.paper}
+        >
+           Learn More
+    </Button>
       </Card>
 
 
