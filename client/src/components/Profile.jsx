@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-import {useBlockstack, useFile} from 'react-blockstack';
-import {getFile, putFile} from 'blockstack';
+import {useBlockstack} from 'react-blockstack';
+import {getFile, putFile, getFileUrl} from 'blockstack';
 import {makeStyles} from '@material-ui/core/styles';
-import {Button} from '@material-ui/core';
+import {Button, Link} from '@material-ui/core';
 
 import {Formik, Field, Form} from 'formik';
 import {TextField, SimpleFileUpload} from 'formik-material-ui';
@@ -47,17 +47,22 @@ const validationSchema = Yup.object().shape({
 })
 
 export default function Profile () {
-    const [content, setContent] = useFile("resume.pdf");
-    console.log(content);
-    const [state, setState] = useState({firstName:"", lastName:"", email:"", loaded:false});
-    if (!state.loaded) {
+    const [state, setState] = useState({firstName:"", lastName:"", email:"", resume:null, userLoaded:false, resumeLoaded:false});
+    if (!state.userLoaded) {
         getFile("user.json")
             .then((file) => {
-                if (!file && !state.loaded) return;
+                if (!file) return;
                 let obj = JSON.parse(file);
-                setState({firstName: obj.firstName, lastName: obj.lastName, email:"", loaded:true});
+                setState({firstName:obj.firstName, lastName:obj.lastName, email:obj.email, resumeURL:state.resumeURL, userLoaded:true, resumeLoaded:state.resumeLoaded});
             });
     }
+    if (!state.resumeLoaded) {
+        getFileUrl("resume.pdf")
+            .then((URL) => {
+                setState({firstName:state.firstName, lastName:state.lastName, email:state.email, resumeURL:URL, userLoaded:state.userLoaded, resumeLoaded:true});
+            });
+    }
+
     const classes = useStyles();
     return (
         <div className={classes.paper}>
@@ -68,13 +73,15 @@ export default function Profile () {
                     initialValues={{
                     firstName: state.firstName,
                     lastName: state.lastName,
+                    email: state.email,
                     }}
                     onSubmit = {
                     (values, {setSubmitting}) => {
                     let blob = new Blob([values.resume]);
                     blob.arrayBuffer()
-                    .then(blobBuffer => putFile("resume.pdf", blobBuffer, {encrypt: false}));
+                    .then(blobBuffer => putFile("resume.pdf", blobBuffer, {encrypt:false}));
                     values.resume = null;
+                    console.log(values);
                     putFile("user.json", JSON.stringify(values));
                     }
                     }
@@ -112,7 +119,7 @@ export default function Profile () {
                     )
                     }
                 />
-
+                <Button onClick={() => window.open(state.resumeURL)}>Download resume</Button>
         </div>
     );
 }
