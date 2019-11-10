@@ -77,7 +77,7 @@ export default function InfoPage({match}) {
       </div>
         <div style={{height:'10px'}}> </div>
           <div style={{backgroundColor:'white', display:'flex', flexDirection:'column',alignItems:'center', padding:'10px', borderRadius:'2px'}}>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Blockstack is a full-stack decentralized computing protocol that enables a new generation of applications where developers and users can interact fairly and securely, while curing the ills of centralized Internet design. Blockstack builds protocols and developer tools designed to enable a fair and open Internet that returns digital rights to developers and consumers. Led by some of the world's foremost experts on distributed systems, Blockstack allows users to own their own data that they can take with them from app to app in the ecosystem, along with their Blockstack ID that eliminates the need for password-based logins. The end result is privacy, security, and freedom.
             </div>
               </Card>
   </center>
