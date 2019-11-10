@@ -8,7 +8,7 @@ import {List, ListItemIcon, ListItemText, Divider, IconButton, MenuList, MenuIte
 import Routes from '../../routes';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   list: {
     width: 250,
   },
@@ -16,9 +16,11 @@ const useStyles = makeStyles({
     width: 'auto',
   },
   listText: {
-    color: '#585'
+    color: '#000'
   },
-});
+}
+)
+);
 
 export default function HeaderDrawer({open, setOpen} : any) {
     const classes = useStyles();

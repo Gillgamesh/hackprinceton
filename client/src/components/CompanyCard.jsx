@@ -66,7 +66,6 @@ export default function CompanyCard(data) {
           <hr/>
         </div>
         <Button
-
             variant="contained"
             color="secondary"
             className={classes.paper}
